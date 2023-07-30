@@ -1,0 +1,193 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/Gloomy Things.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/pics/k001.jpg" type="Texture" id=2]
+[ext_resource path="res://Options.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.160784, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.160784, 0.00392157, 0.00392157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.411765, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 60
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.160784, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.160784, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.411765, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 60
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.411765, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 60
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.160784, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.160784, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.411765, 0, 0, 1 )
+
+[node name="Options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 640, 361.5 )
+scale = Vector2( 1.0125, 1.02361 )
+texture = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.67451 )
+
+[node name="AudioOptions" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AudioOptions"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 526.0
+margin_top = 320.0
+margin_right = 717.0
+margin_bottom = 381.0
+
+[node name="Audio" type="Button" parent="AudioOptions/VBoxContainer"]
+margin_right = 191.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 2 )
+text = "Audio"
+
+[node name="BackFromOptions" type="Button" parent="AudioOptions"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 538.48
+margin_top = 619.0
+margin_right = 701.52
+margin_bottom = 680.0
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 8 )
+text = "Back"
+
+[node name="Audio" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -4.0
+margin_right = -8.0
+margin_bottom = -4.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Audio"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -261.0
+margin_top = -95.5
+margin_right = 261.0
+margin_bottom = 95.5
+
+[node name="Labels" type="VBoxContainer" parent="Audio/HBoxContainer"]
+margin_right = 181.0
+margin_bottom = 191.0
+
+[node name="Master" type="Label" parent="Audio/HBoxContainer/Labels"]
+margin_right = 181.0
+margin_bottom = 61.0
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "Master"
+
+[node name="Music" type="Label" parent="Audio/HBoxContainer/Labels"]
+margin_top = 65.0
+margin_right = 181.0
+margin_bottom = 126.0
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "Music"
+
+[node name="SoundFX" type="Label" parent="Audio/HBoxContainer/Labels"]
+margin_top = 130.0
+margin_right = 181.0
+margin_bottom = 191.0
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "SoundFX"
+
+[node name="Slider" type="VBoxContainer" parent="Audio/HBoxContainer"]
+margin_left = 185.0
+margin_right = 522.0
+margin_bottom = 191.0
+size_flags_horizontal = 3
+
+[node name="Master" type="HSlider" parent="Audio/HBoxContainer/Slider"]
+margin_right = 337.0
+margin_bottom = 16.0
+size_flags_vertical = 2
+
+[node name="Music" type="HSlider" parent="Audio/HBoxContainer/Slider"]
+margin_top = 65.0
+margin_right = 337.0
+margin_bottom = 81.0
+size_flags_vertical = 2
+
+[node name="SoundFX" type="HSlider" parent="Audio/HBoxContainer/Slider"]
+margin_top = 130.0
+margin_right = 337.0
+margin_bottom = 146.0
+size_flags_vertical = 2
+
+[node name="BackFromAudio" type="Button" parent="Audio"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -61.0
+margin_right = 154.0
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/normal = SubResource( 6 )
+text = "Back"
+
+[connection signal="pressed" from="AudioOptions/VBoxContainer/Audio" to="." method="_on_Audio_pressed"]
+[connection signal="pressed" from="AudioOptions/BackFromOptions" to="." method="_on_BackFromOptions_pressed"]
+[connection signal="value_changed" from="Audio/HBoxContainer/Slider/Master" to="." method="_on_Master_value_changed"]
+[connection signal="value_changed" from="Audio/HBoxContainer/Slider/Music" to="." method="_on_Music_value_changed"]
+[connection signal="value_changed" from="Audio/HBoxContainer/Slider/SoundFX" to="." method="_on_SoundFX_value_changed"]
+[connection signal="pressed" from="Audio/BackFromAudio" to="." method="_on_BackFromAudio_pressed"]

@@ -1,0 +1,166 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Assets/pics/dialog.png" type="Texture" id=1]
+[ext_resource path="res://TaskFinished.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Gloomy Things.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/pics/indicator.png" type="Texture" id=4]
+[ext_resource path="res://Assets/audios/success.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Assets/audios/typing1.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Assets/pics/k9.jpg" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "IDLE"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 909, 162 ), Vector2( 909, 170 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 909, 162 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.529412, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.333333, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.529412, 0, 0, 1 )
+
+[node name="TaskFinished" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="Pic" type="Sprite" parent="."]
+position = Vector2( 641, 358.5 )
+scale = Vector2( 1.00781, 1.01528 )
+texture = ExtResource( 7 )
+
+[node name="DialogBox" type="Control" parent="."]
+anchor_left = 15.825
+anchor_top = 17.977
+anchor_right = 15.825
+anchor_bottom = 17.977
+margin_left = -513.0
+margin_top = -279.08
+margin_right = 521.0
+margin_bottom = -41.0801
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="DialogBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 70.0
+margin_right = -100.0
+margin_bottom = -60.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "'Congratulation!! You have completed my assigned task!'"
+text = "'Congratulation!! You have completed my assigned task!'"
+
+[node name="Indicator" type="Sprite" parent="DialogBox"]
+visible = false
+position = Vector2( 909, 162 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogBox/Indicator"]
+autoplay = "IDLE"
+anims/IDLE = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="Tween" type="Tween" parent="DialogBox"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogBox"]
+stream = ExtResource( 6 )
+volume_db = -20.101
+autoplay = true
+
+[node name="Success" type="AudioStreamPlayer" parent="DialogBox"]
+stream = ExtResource( 5 )
+autoplay = true
+
+[node name="BackButton" type="Button" parent="DialogBox"]
+margin_left = 722.0
+margin_top = 155.0
+margin_right = 828.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 4 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+text = "Back"
+
+[node name="QuitButton" type="Button" parent="DialogBox"]
+margin_left = 840.0
+margin_top = 155.0
+margin_right = 946.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 4 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+text = "Quit"
+
+[node name="ContinueButton" type="Button" parent="DialogBox"]
+margin_left = 586.0
+margin_top = 155.0
+margin_right = 711.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 4 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+text = "Continue"
+
+[connection signal="tween_completed" from="DialogBox/Tween" to="DialogBox" method="_on_Tween_tween_completed"]
+[connection signal="pressed" from="DialogBox/BackButton" to="DialogBox" method="_on_BackButton_pressed"]
+[connection signal="pressed" from="DialogBox/QuitButton" to="DialogBox" method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="DialogBox/ContinueButton" to="DialogBox" method="_on_ContinueButton_pressed"]

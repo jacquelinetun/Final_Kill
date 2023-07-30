@@ -1,0 +1,115 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/pics/dialog.png" type="Texture" id=1]
+[ext_resource path="res://DialogBox.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Gloomy Things.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/pics/indicator.png" type="Texture" id=4]
+[ext_resource path="res://Assets/pics/k1.jpg" type="Texture" id=5]
+[ext_resource path="res://Assets/audios/typing1.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Assets/pics/boss.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "IDLE"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 909, 162 ), Vector2( 909, 170 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 909, 162 ) ]
+}
+
+[node name="Control" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 642, 351 )
+scale = Vector2( 1.02891, 1.05833 )
+texture = ExtResource( 5 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 642, 351 )
+scale = Vector2( 1.02891, 1.05833 )
+texture = ExtResource( 7 )
+
+[node name="DialogBox" type="Control" parent="."]
+anchor_left = 15.825
+anchor_top = 17.977
+anchor_right = 15.825
+anchor_bottom = 17.977
+margin_left = -513.0
+margin_top = -279.08
+margin_right = 521.0
+margin_bottom = -41.0801
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="DialogBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 70.0
+margin_right = -100.0
+margin_bottom = -60.0
+custom_colors/default_color = Color( 0.666667, 0.0745098, 0.0745098, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "You are chosen to play as the main character in my game. This game is simple. All you have to do is play the game that I invented."
+text = "You are chosen to play as the main character in my game. This game is simple. All you have to do is play the game that I invented."
+
+[node name="Indicator" type="Sprite" parent="DialogBox"]
+position = Vector2( 909, 162 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogBox/Indicator"]
+autoplay = "IDLE"
+anims/IDLE = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="Tween" type="Tween" parent="DialogBox"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogBox"]
+stream = ExtResource( 6 )
+volume_db = -20.101
+autoplay = true
+
+[connection signal="tween_completed" from="DialogBox/Tween" to="DialogBox" method="_on_Tween_tween_completed"]

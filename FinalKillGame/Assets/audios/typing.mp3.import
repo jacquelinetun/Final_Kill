@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/typing.mp3-c558ce971c62b30aa5031b999af58feb.mp3str"
+
+[deps]
+
+source_file="res://Assets/audios/typing.mp3"
+dest_files=[ "res://.import/typing.mp3-c558ce971c62b30aa5031b999af58feb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
