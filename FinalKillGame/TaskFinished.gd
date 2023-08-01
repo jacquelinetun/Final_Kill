@@ -41,4 +41,4 @@ func _on_BackButton_pressed() -> void:
 	SceneTransition.change_scene("res://MainMenu.tscn")
 
 func _on_ContinueButton_pressed() -> void:
-	SceneTransition.change_scene("res://GirlAssignedTask.tscn")
+	SceneTransition.change_scene("res://ManAssignedTask.tscn")

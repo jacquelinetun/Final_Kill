@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://GirlInteract.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Npc asset/girl.png" type="Texture" id=2]
+[ext_resource path="res://ManInteract.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Npc asset/mannpc.png" type="Texture" id=2]
 [ext_resource path="res://Assets/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" type="Script" id=4]
 [ext_resource path="res://addons/dialogue_nodes/objects/dialogueBox.gd" type="Script" id=5]
@@ -43,7 +43,7 @@ script = ExtResource( 4 )
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 38.5, 44 )
 
-[node name="Girl" type="Area2D"]
+[node name="Man" type="Area2D"]
 collision_layer = 65
 script = ExtResource( 1 )
 
@@ -64,7 +64,7 @@ margin_top = -62.0
 margin_right = 59.0
 margin_bottom = -47.0
 custom_fonts/font = SubResource( 1 )
-text = "interact (y)"
+text = "interact (o)"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false

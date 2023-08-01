@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://addons/dialogue_nodes/themes/pixelart.theme" type="Theme" id=1]
+[ext_resource path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" type="Script" id=2]
+[ext_resource path="res://addons/dialogue_nodes/objects/dialogueBox.gd" type="Script" id=3]
+[ext_resource path="res://dialogues/ManDm.gd" type="Script" id=4]
+[ext_resource path="res://Assets/pics/judgedm.png" type="Texture" id=5]
+[ext_resource path="res://Assets/audios/typing1.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Assets/audios/horror-music-box.mp3" type="AudioStream" id=7]
+
+[sub_resource type="RichTextEffect" id=1]
+script = ExtResource( 2 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="DialogueBox" type="PopupDialog" parent="."]
+visible = true
+margin_left = 303.0
+margin_top = 438.0
+margin_right = 912.0
+margin_bottom = 664.0
+rect_min_size = Vector2( 300, 72 )
+theme = ExtResource( 1 )
+popup_exclusive = true
+script = ExtResource( 3 )
+dialogue_file = "res://judgedm.json"
+start_id = "Judge"
+max_options = 3
+options_alignment = 1
+custom_effects = [ SubResource( 1 ) ]
+
+[node name="Bg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -12.123
+autoplay = true
+
+[node name="Typing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "Sound FX"
+
+[connection signal="dialogue_ended" from="DialogueBox" to="." method="_on_DialogueBox_dialogue_ended"]
+[connection signal="dialogue_proceeded" from="DialogueBox" to="." method="_on_DialogueBox_dialogue_proceeded"]

@@ -13,5 +13,5 @@ func _on_DialogueBox_dialogue_proceeded() -> void:
 #	pass
 
 func _on_DialogueBox_dialogue_ended():
-	SceneTransition.change_scene("res://World.tscn")
+	SceneTransition.change_scene("res://Scene1.tscn")
 

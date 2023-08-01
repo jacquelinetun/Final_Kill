@@ -1,9 +1,7 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Assets/Npc asset/police.png" type="Texture" id=1]
 [ext_resource path="res://Policeman.gd" type="Script" id=2]
-[ext_resource path="res://HurtBox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Stats.tscn" type="PackedScene" id=4]
 [ext_resource path="res://PlayerDetectionZone.tscn" type="PackedScene" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -150,13 +148,11 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=18]
 radius = 4.12311
 
-[sub_resource type="CapsuleShape2D" id=35]
-height = 0.0
-
 [sub_resource type="CircleShape2D" id=38]
-radius = 23.4669
+radius = 26.7301
 
-[sub_resource type="CircleShape2D" id=37]
+[sub_resource type="RectangleShape2D" id=39]
+extents = Vector2( 5.41667, 7.75 )
 
 [node name="Police" type="KinematicBody2D"]
 position = Vector2( 400, 236 )
@@ -174,14 +170,6 @@ playing = true
 position = Vector2( 0, 2 )
 shape = SubResource( 18 )
 
-[node name="HurtBox" parent="." instance=ExtResource( 3 )]
-collision_layer = 16
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource( 35 )
-
-[node name="Stats" parent="." instance=ExtResource( 4 )]
-
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 0.705882 )
 
@@ -192,9 +180,7 @@ shape = SubResource( 38 )
 collision_layer = 35
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PoliceArea2D"]
-position = Vector2( -0.166672, 0.166664 )
-shape = SubResource( 37 )
+position = Vector2( 0.25, -0.75 )
+shape = SubResource( 39 )
 
-[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
-[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 [connection signal="body_entered" from="PoliceArea2D" to="." method="_on_PoliceArea2D_body_entered"]

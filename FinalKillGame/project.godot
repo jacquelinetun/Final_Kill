@@ -27,13 +27,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Final Kill"
-run/main_scene="res://World.tscn"
+run/main_scene="res://VideoPlayer.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 SceneTransition="*res://scene_transition.tscn"
 SaveGame="*res://SaveGame.gd"
+BgMusic="*res://BgMusic.tscn"
 
 [display]
 
@@ -109,12 +110,6 @@ left_click={
 attack={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":74,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
-}
-shoot={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":74,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }

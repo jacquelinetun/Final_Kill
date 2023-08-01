@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/pics/indicator.png" type="Texture" id=1]
+[ext_resource path="res://Assets/pics/dialog.png" type="Texture" id=2]
+[ext_resource path="res://Assets/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/audios/typing1.mp3" type="AudioStream" id=4]
+[ext_resource path="res://ManDialogBox.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "IDLE"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 297, 257 ), Vector2( 297, 262 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 297, 257 ) ]
+}
+
+[node name="Control" type="Control"]
+light_mask = 5
+use_parent_material = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DialogBox" type="Control" parent="."]
+light_mask = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="DialogBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 47.0
+margin_top = -164.0
+margin_right = 1967.0
+margin_bottom = 317.0
+rect_scale = Vector2( 0.15, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 74.0
+margin_top = -141.0
+margin_right = 311.0
+margin_bottom = -88.0
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Hello! Miss!"
+text = "Hello! Miss!"
+
+[node name="Tween" type="Tween" parent="DialogBox"]
+
+[node name="Indicator" type="Sprite" parent="DialogBox"]
+light_mask = 5
+position = Vector2( 297, 257 )
+texture = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogBox/Indicator"]
+autoplay = "IDLE"
+anims/IDLE = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogBox"]
+stream = ExtResource( 4 )
+
+[connection signal="focus_entered" from="DialogBox" to="DialogBox" method="_on_DialogBox_focus_entered"]
+[connection signal="tween_completed" from="DialogBox/Tween" to="DialogBox" method="_on_Tween_tween_completed"]

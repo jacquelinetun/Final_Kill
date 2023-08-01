@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/crime_bg_music.mp3-4d90a2234bef5803a8c3f60946de36e5.mp3str"
+
+[deps]
+
+source_file="res://Assets/audios/crime_bg_music.mp3"
+dest_files=[ "res://.import/crime_bg_music.mp3-4d90a2234bef5803a8c3f60946de36e5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

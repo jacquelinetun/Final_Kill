@@ -39,8 +39,8 @@ func _on_Tween_tween_completed(_object, _key):
 	finished = true
 
 	
-	#if 	dialog_index == 2:
-	#	SceneTransition.change_scene("res://dialogues//LadyDm.tscn")
+	if 	dialog_index == 1:
+		SceneTransition.change_scene("res://dialogues//GirlDm.tscn")
 
 
 	
